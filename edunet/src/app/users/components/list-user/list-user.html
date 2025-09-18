@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+	<div class="col-lg-10 col-xl-8">
+		<div class="card shadow-sm p-4">
+			<div class="mb-3">
+				<h2 class="h5">Gestión de Usuarios</h2>
+				<p class="text-muted">Administra las cuentas de los estudiantes, docentes y personal administrativo.</p>
+			</div>
+
+			<div class="row g-2 align-items-center mb-3">
+				<div class="col-md-9">
+					<input type="text" class="form-control" placeholder="Buscar usuario por nombre o correo..." [(ngModel)]="busqueda">
+				</div>
+				<div class="col-md-3">
+					<button class="btn btn-primary w-100" (click)="buscarUsuario()">Buscar</button>
+				</div>
+			</div>
+
+			<div class="row g-2 mb-4">
+				<div class="col-md-4">
+					<button class="btn btn-success w-100" (click)="crearUsuario()">Crear Usuario</button>
+				</div>
+				<div class="col-md-4">
+					<button class="btn btn-warning w-100" [disabled]="!usuarioSeleccionado" (click)="modificarUsuario()">Modificar Usuario</button>
+				</div>
+				<div class="col-md-4">
+					<button class="btn btn-danger w-100" [disabled]="!usuarioSeleccionado" (click)="eliminarUsuario()">Eliminar Usuario</button>
+				</div>
+			</div>
+
+			<div>
+				<h6 class="fw-bold mb-3">Usuarios Registrados</h6>
+				<ul class="list-group">
+								@for (user of usuariosFiltrados; track user.correo) {
+									<li class="list-group-item" [class.active]="user === usuarioSeleccionado" (click)="seleccionarUsuario(user)">
+										{{ user.nombres }} {{ user.apellidos }} - {{ obtenerRol(user.rol || user.idRol) }}
+									</li>
+								}
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

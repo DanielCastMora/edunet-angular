@@ -1,0 +1,81 @@
+
+<div class="row justify-content-center">
+	<div class="col-md-6">
+		<div class="card shadow">
+			<div class="card-header bg-primary text-white">
+				<h2 class="h5 mb-0">Registrar nuevo usuario</h2>
+			</div>
+			<div class="card-body">
+				<form (ngSubmit)="onSubmit()" #userForm="ngForm">
+					<div class="mb-3">
+						<input placeholder="Nombres" type="text" class="form-control" id="nombres" name="nombres" [(ngModel)]="usuario.nombres" required>
+					</div>
+					<div class="mb-3">
+						<input placeholder="Apellidos" type="text" class="form-control" id="apellidos" name="apellidos" [(ngModel)]="usuario.apellidos" required>
+					</div>
+					<div class="mb-3">
+						<input placeholder="Correo" type="email" class="form-control" id="correo" name="correo" [(ngModel)]="usuario.correo" required>
+					</div>
+					<div class="mb-3">
+						<input placeholder="Telefono" type="text" class="form-control" id="telefono" name="telefono" [(ngModel)]="usuario.telefono" required>
+					</div>
+					<div class="mb-3">
+						<input placeholder="Documento" type="text" class="form-control" id="documento" name="documento" [(ngModel)]="usuario.documento" required>
+					</div>
+					<div class="mb-3">
+						<input placeholder="Dirección" type="text" class="form-control" id="direccion" name="direccion" [(ngModel)]="usuario.direccion" required>
+					</div>
+					<div class="mb-3">
+						<input placeholder="Contraseña" type="password" class="form-control" id="contrasena" name="contrasena" [(ngModel)]="usuario.contrasena" required>
+					</div>
+					<div class="mb-3">
+						<select class="form-select" id="rol" name="rol" [(ngModel)]="usuario.rol" required (change)="onRolChange()">
+							<option value="" selected disabled>Seleccione un rol</option>
+							<option value="1">Estudiante</option>
+							<option value="2">Profesor</option>
+							<option value="3">Acudiente</option>
+							<option value="4">Administrador</option>
+						</select>
+					</div>
+
+
+					<!-- Campos para Estudiante -->
+					@if (usuario.rol == '1') {
+						<div class="mb-3">
+							<input placeholder="Grado" type="text" class="form-control mb-2" name="grado" [(ngModel)]="usuario.grado">
+							<hr>
+							<h4>Contacto de emergencia</h4>
+							<input placeholder="Nombre Contacto de emergencia" type="text" class="form-control mb-2" name="contacto_emergencia" [(ngModel)]="usuario.contacto_emergencia">
+							<input placeholder="Telefono Contacto de emergencia" type="text" class="form-control mb-2" name="telefono_contacto_emergencia" [(ngModel)]="usuario.telefono_contacto_emergencia">
+						</div>
+					}
+
+					<!-- Campos para Profesor -->
+					@if (usuario.rol == '2') {
+						<div class="mb-3">
+							<input placeholder="Curso asignado" type="text" class="form-control" name="curso_asignado" [(ngModel)]="usuario.curso_asignado">
+						</div>
+					}
+
+					<!-- Campos para Acudiente -->
+					@if (usuario.rol == '3') {
+						<div class="mb-3">
+							<input placeholder="Nombre del estudiante a cargo" type="text" class="form-control mb-2" name="estudiante_relacionado" [(ngModel)]="usuario.estudiante_relacionado">
+							<input placeholder="Parentesco" type="text" class="form-control" name="parentesco" [(ngModel)]="usuario.parentesco">
+						</div>
+					}
+
+					<!-- Campos para Admin -->
+					@if (usuario.rol == '4') {
+						<div class="mb-3">
+							<input placeholder="Cargo dentro de la institución (Ej: Director)" type="text" class="form-control" name="cargo" [(ngModel)]="usuario.cargo">
+						</div>
+					}
+
+					<button type="submit" class="btn btn-primary w-100" id="registrar">Registrar</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+

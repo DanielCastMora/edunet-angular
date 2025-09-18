@@ -1,0 +1,46 @@
+
+html, body {
+	height: 100%;
+}
+
+.app-wrapper {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+main.container {
+	flex: 1 0 auto;
+}
+
+app-footer, .app-footer, footer {
+	margin-top: auto !important;
+	width: 100%;
+	background-color: #dddddd !important;
+}
+
+:root {
+	--color-azul: #0057A8;
+	--color-rojo: #C1272D;
+	--color-blanco: #FFFFFF;
+	--color-texto: #333333;
+	--color-neutro: #E0E0E0;
+	--color-destacado: #FFD700;
+	--bs-light: #dddddd;
+}
+
+body {
+	background-color: #f4f6f9;
+	font-family: 'Segoe UI', sans-serif;
+	color: #333333;
+	margin: 0;
+}
+
+.bg-primary {
+    background-color: var(--color-azul) !important;
+    color: var(--color-blanco) !important;
+}
+
+.nav {
+    --bs-nav-link-color: white !important;
+}
